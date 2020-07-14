@@ -1,0 +1,19 @@
+@font-face {
+	font-family: bodyfont;
+	font-style: normal;
+	font-weight: 400;
+	src: url("96594ad4.woff2") format('woff2');
+}
+.pepro_cf7sms_panel label {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.cf7sms_setting_section{
+  border: 1px solid gray;
+  padding: 1rem;
+  margin-block: 1rem;
+}

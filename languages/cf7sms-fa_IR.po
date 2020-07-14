@@ -1,0 +1,640 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CF7 SMS Notifier\n"
+"POT-Creation-Date: 2020-07-14 14:17+0430\n"
+"PO-Revision-Date: 2020-07-14 14:22+0430\n"
+"Last-Translator: Amirhosseinhpv <amirhossein@hpv.im>\n"
+"Language-Team: Amirhosseinhpv <amirhossein@hpv.im>\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: pepro-cf7-sms.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#. Plugin Name of the plugin/theme
+#: pepro-cf7-sms.php:69
+msgid "CF7 SMS Notifier"
+msgstr "اعلانات پیامکی فرم تماس 7"
+
+#: pepro-cf7-sms.php:70
+msgid "CF7 SMS"
+msgstr "پیامک فرم تماس 7"
+
+#: pepro-cf7-sms.php:71
+#, php-format
+msgid "%2$s ver. %1$s"
+msgstr "%2$s نسخه %1$s"
+
+#: pepro-cf7-sms.php:99
+msgid "SMS Notification"
+msgstr "اعلانات پیامکی"
+
+#: pepro-cf7-sms.php:116
+msgid "Activate SMS Notification for Administrators"
+msgstr "فعالسازی اعلانات پیامکی برای مدیران"
+
+#: pepro-cf7-sms.php:119
+msgid "Administrators Mobile:"
+msgstr "موبایل مدیران:"
+
+#: pepro-cf7-sms.php:120
+msgid ""
+"Enter Administrators mobiles number (Comma separated, with no spaces between)"
+msgstr ""
+"شماره موبایل مدیران را وارد کنید (بدون فاصله و با کاما (,) از هم جدا کنید)"
+
+#: pepro-cf7-sms.php:123 pepro-cf7-sms.php:159
+msgid "SMS Body:"
+msgstr "متن پیامک:"
+
+#: pepro-cf7-sms.php:125 pepro-cf7-sms.php:126 pepro-cf7-sms.php:161
+#: pepro-cf7-sms.php:162
+msgid ""
+"Enter SMS text, you can use Contact Form 7 short tags just like what you've "
+"entered as Email body in Mail tab"
+msgstr "متن پیامک را وارد کنید (استفاده از تگ های فرم تماس مجاز است)"
+
+#: pepro-cf7-sms.php:132 pepro-cf7-sms.php:168
+msgid "Use Ultra-fast SMS sending feature"
+msgstr "استفاده از ماژول ارسال فوق العاده سریع"
+
+#: pepro-cf7-sms.php:135 pepro-cf7-sms.php:171
+msgid "Ultra-fast Template ID:"
+msgstr "شناسه قالب:"
+
+#: pepro-cf7-sms.php:137 pepro-cf7-sms.php:138 pepro-cf7-sms.php:173
+#: pepro-cf7-sms.php:174
+msgid "Enter Ultra-fast Template ID"
+msgstr "شناسه قالب ارسال فوق العاده سریع را وارد کنید"
+
+#: pepro-cf7-sms.php:141 pepro-cf7-sms.php:177
+msgid "Ultra-fast Template Params:"
+msgstr "پارامتر های قالب:"
+
+#: pepro-cf7-sms.php:143 pepro-cf7-sms.php:144 pepro-cf7-sms.php:179
+#: pepro-cf7-sms.php:180
+msgid ""
+"Enter Ultra-fast Template Parameters (Comma separated, with no spaces between)"
+msgstr ""
+"پارامتر های استفاده شده در قالب را وارد کنید (بدون فاصله و با کاما (,) از هم "
+"جدا کنید)"
+
+#: pepro-cf7-sms.php:150
+msgid "Activate SMS Notification for Submitter"
+msgstr "فعالسازی اعلانات پیامکی برای کاربر"
+
+#: pepro-cf7-sms.php:153
+msgid "Submitter Mobile Field:"
+msgstr "فیلد موبایل کاربر:"
+
+#: pepro-cf7-sms.php:155 pepro-cf7-sms.php:156
+msgid "Enter the mobile field you set for submitter. e.g. your-phone"
+msgstr "نام فیلد شماره موبایل کاربر را وارد کنید. مثلا: your-phone"
+
+#: pepro-cf7-sms.php:255 pepro-cf7-sms.php:306
+msgid "Ultra-fast Template Params missing."
+msgstr "پارامتر های قالب ارسال فوق العاده سریع وارد نشدند."
+
+#: pepro-cf7-sms.php:258 pepro-cf7-sms.php:309
+msgid "Ultra-fast Template ID missing."
+msgstr "شناسه قالب ارسال فوق العاده سریع یافت نشد."
+
+#: pepro-cf7-sms.php:269
+msgid "No admin mobile is set to recieve SMS"
+msgstr "شماره موبایل مدیران یافت نشد"
+
+#: pepro-cf7-sms.php:320
+msgid "No user mobile is set to recieve SMS"
+msgstr "فیلد شماره موبایل کاربر یافت نشد"
+
+#: pepro-cf7-sms.php:350 pepro-cf7-sms.php:351
+msgid "Support"
+msgstr "پشتیبانی این محصول"
+
+#: pepro-cf7-sms.php:364
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: pepro-cf7-sms.php:365
+msgid "Submitions"
+msgstr "لیست داده های ثبت شده"
+
+#: pepro-cf7-sms.php:424
+#, php-format
+msgctxt "footer-copyright"
+msgid "Thanks for using %s products"
+msgstr "بابت استفاده از محصولات %s سپاسگزاریم"
+
+#: pepro-cf7-sms.php:424
+msgid "Pepro Dev"
+msgstr "تیم برنامه ‏نویسی پپرو"
+
+#: pepro-cf7-sms.php:429
+#, php-format
+msgctxt "footer-copyright"
+msgid "%s — Version %s"
+msgstr "%s — نسخه %s"
+
+#: pepro-cf7-sms.php:463
+msgid "Unauthorized Access!"
+msgstr "شما دسترسی لازم را ندارید !"
+
+#: pepro-cf7-sms.php:473
+#, php-format
+msgid "Submition ID %s Successfully Deleted."
+msgstr "داده ثبتی به شماره %s با موفقیت پاک شد."
+
+#: pepro-cf7-sms.php:475
+#, php-format
+msgid "Error Deleting Submition ID %s."
+msgstr "متاسفانه خطایی در حذف داده ثبتی به شماره %s رخ داد."
+
+#: pepro-cf7-sms.php:486
+#, php-format
+msgid "All data regarding Contact form %s (ID %s) were Successfully Deleted."
+msgstr "داده های ثبتی مربوط به فرم تماس %s ( شناسه %s ) با موفقیت پاک شدند."
+
+#: pepro-cf7-sms.php:488
+#, php-format
+msgid "Error Deleting Contact form %s (ID %s) data from database."
+msgstr "خطایی در حذف داده های مربوط به فرم تماس %s ( شناسه %s ) رخ داد."
+
+#: pepro-cf7-sms.php:498
+msgid "Database Successfully Cleared."
+msgstr "دیتابیس با موفقیت پاکسازی شد."
+
+#: pepro-cf7-sms.php:500
+msgid "Error Clearing Database."
+msgstr "خطایی در پاکسازی دیتابیس داده رخ داد."
+
+#: pepro-cf7-sms.php:519
+msgid "List of CF7 Submitions"
+msgstr "داده های فرم تماس 7"
+
+#: pepro-cf7-sms.php:520
+msgid "Setting"
+msgstr "تنظیمات"
+
+#: pepro-cf7-sms.php:542
+msgctxt "setting-general"
+msgid "Settings saved successfully."
+msgstr "تنظیمات با موفقیت ثبت گردیدند."
+
+#: pepro-cf7-sms.php:546
+msgctxt "setting-general"
+msgid "User Security Key"
+msgstr "کد امنیتی (Security code)"
+
+#: pepro-cf7-sms.php:547
+msgctxt "setting-general"
+msgid "User API Key"
+msgstr "کلید وب سرویس (API key)"
+
+#: pepro-cf7-sms.php:548
+msgctxt "setting-general"
+msgid "Line Number"
+msgstr "شماره پیشفرض ارسال پیامک"
+
+#: pepro-cf7-sms.php:549
+msgctxt "setting-general"
+msgid "Clear Configurations on Unistall"
+msgstr "پاکسازی تنظیمات هنگام حذف افزونه"
+
+#: pepro-cf7-sms.php:549 pepro-cf7-sms.php:550
+msgctxt "settings-general"
+msgid "Yes"
+msgstr "بله"
+
+#: pepro-cf7-sms.php:549 pepro-cf7-sms.php:550
+msgctxt "settings-general"
+msgid "No"
+msgstr "خیر"
+
+#: pepro-cf7-sms.php:550
+msgctxt "setting-general"
+msgid "Clear Database Data on Unistall"
+msgstr "پاکسازی دیتابیس هنگام حذف افزونه"
+
+#: pepro-cf7-sms.php:554
+msgid "Save setting"
+msgstr "ذخیره تنظیمات"
+
+#: pepro-cf7-sms.php:555
+msgctxt "setting-general"
+msgid "Empty Database"
+msgstr "پاکسازی دیتابیس"
+
+#: pepro-cf7-sms.php:568
+msgctxt "wc-setting-js"
+msgid "Select image file"
+msgstr "انتخاب فایل عکس"
+
+#: pepro-cf7-sms.php:569
+msgctxt "wc-setting-js"
+msgid "Use this image"
+msgstr "استفاده از این عکس"
+
+#: pepro-cf7-sms.php:570
+msgctxt "wc-setting-js"
+msgid "Clear"
+msgstr "پاک کردن"
+
+#: pepro-cf7-sms.php:571
+msgctxt "wc-setting-js"
+msgid "Current preview"
+msgstr "پیش نمایش فعلی"
+
+#: pepro-cf7-sms.php:572
+msgctxt "wc-setting-js"
+msgid "Select image"
+msgstr "انتخاب عکس"
+
+#: pepro-cf7-sms.php:573
+msgctxt "js-string"
+msgid "Submit"
+msgstr "ثبت"
+
+#: pepro-cf7-sms.php:574
+msgctxt "js-string"
+msgid "Today"
+msgstr "امروز"
+
+#: pepro-cf7-sms.php:575
+msgctxt "wc-setting-js"
+msgid "Error"
+msgstr "خطا"
+
+#: pepro-cf7-sms.php:576
+msgctxt "wc-setting-js"
+msgid "Canceled"
+msgstr "لغو شد"
+
+#: pepro-cf7-sms.php:577
+msgctxt "wc-setting-js"
+msgid "Confirm"
+msgstr "تایید کنید"
+
+#: pepro-cf7-sms.php:578
+msgctxt "wc-setting-js"
+msgid "Success"
+msgstr "عملیات موفق"
+
+#: pepro-cf7-sms.php:579
+msgctxt "wc-setting-js"
+msgid "Submit"
+msgstr "ثبت"
+
+#: pepro-cf7-sms.php:580
+msgctxt "wc-setting-js"
+msgid "Okay"
+msgstr "باشه"
+
+#: pepro-cf7-sms.php:581
+msgctxt "wc-setting-js"
+msgid "Yes"
+msgstr "بله"
+
+#: pepro-cf7-sms.php:582
+msgctxt "wc-setting-js"
+msgid "No"
+msgstr "خیر"
+
+#: pepro-cf7-sms.php:583
+msgctxt "wc-setting-js"
+msgid "Cancel"
+msgstr "لغو"
+
+#: pepro-cf7-sms.php:584
+msgctxt "wc-setting-js"
+msgid "Send to all"
+msgstr "ارسال به لیست"
+
+#: pepro-cf7-sms.php:585
+msgctxt "wc-setting-js"
+msgid "Close"
+msgstr "بستن"
+
+#: pepro-cf7-sms.php:586
+msgctxt "wc-setting-js"
+msgid "Delete Submition"
+msgstr "حذف داده ثبت شده"
+
+#: pepro-cf7-sms.php:587
+#, php-format
+msgctxt "wc-setting-js"
+msgid "Are you sure you want to delete submition ID %s ? This cannot be undone."
+msgstr ""
+"آیا از حذف داده ثبتی به شماره %s اطمینان دارید؟ این عملیات قابل بازگردانی "
+"نیست."
+
+#: pepro-cf7-sms.php:588
+msgctxt "wc-setting-js"
+msgid ""
+"Are you sure you want to clear all data from database? This cannot be undone."
+msgstr ""
+"آیا مطمئن هستید میخواهید تمامی رکورد های دیتابیس و تاریخچه داده های ذخیره شده "
+"را حذف کنید؟ این عملیات قابل بازگشت نیست."
+
+#: pepro-cf7-sms.php:589
+msgctxt "wc-setting-js"
+msgid ""
+"Are you sure you want to clear all Current Contact form data from database? "
+"This cannot be undone."
+msgstr ""
+"آیا مطمئن هستید میخواهید تمامی رکورد های دیتابیس مرتبط با فرم تماس فعلی و "
+"تاریخچه داده های ذخیره شده را حذف کنید؟ این عملیات قابل بازگردانی نیست."
+
+#: pepro-cf7-sms.php:590
+msgctxt "wc-setting-js"
+msgid "Clear Database"
+msgstr "پاکسازی دیتابیس"
+
+#: pepro-cf7-sms.php:592
+#, php-format
+msgctxt "wc-setting-js"
+msgid "Contact Form 7 Database Exported via %s"
+msgstr "استخراج شده توسط %s"
+
+#: pepro-cf7-sms.php:593
+msgctxt "wc-setting-js"
+msgid "CF7 Database Export"
+msgstr "استخراج کننده فرم تماس 7 از پپرو"
+
+#: pepro-cf7-sms.php:594
+#, php-format
+msgctxt "wc-setting-js"
+msgid "Exported at %s @ %s"
+msgstr "استخراج شده در %s @ %s"
+
+#: pepro-cf7-sms.php:596
+#, php-format
+msgctxt "wc-setting-js"
+msgid ""
+"Exported via %s — Export Date: %s @ %s — Developed by Pepro Dev Team "
+"( https://pepro.dev/ )"
+msgstr ""
+"استخراج توسط %s — تاریخ: %s @ %s — توسعه یافته توسط تیم توسعه نرم‌افزاری پپرو "
+"( https://pepro.dev/ )"
+
+#: pepro-cf7-sms.php:598
+msgctxt "data-table"
+msgid "No data available in table"
+msgstr "هیچ داده ای در جدول وجود ندارد"
+
+#: pepro-cf7-sms.php:599
+msgctxt "data-table"
+msgid "Showing _START_ to _END_ of _TOTAL_ entries"
+msgstr "نمایش _START_ تا _END_ از _TOTAL_ رکورد"
+
+#: pepro-cf7-sms.php:600
+msgctxt "data-table"
+msgid "Showing 0 to 0 of 0 entries"
+msgstr "نمایش 0 تا 0 از 0 رکورد"
+
+#: pepro-cf7-sms.php:601
+msgctxt "data-table"
+msgid "(filtered from _MAX_ total entries)"
+msgstr "(فیلتر شده از _MAX_ رکورد)"
+
+#: pepro-cf7-sms.php:602
+msgctxt "data-table"
+msgid "Show _MENU_ entries"
+msgstr "نمایش _MENU_ رکورد"
+
+#: pepro-cf7-sms.php:603
+msgctxt "data-table"
+msgid "Loading..."
+msgstr "در حال بارگزاری ..."
+
+#: pepro-cf7-sms.php:604
+msgctxt "data-table"
+msgid "Processing..."
+msgstr "در حال پردازش ..."
+
+#: pepro-cf7-sms.php:605
+msgctxt "data-table"
+msgid "Search:"
+msgstr "جستجو در موارد نمایش داده شده:"
+
+#: pepro-cf7-sms.php:606
+msgctxt "data-table"
+msgid "No matching records found"
+msgstr "رکوردی با این مشخصات پیدا نشد"
+
+#: pepro-cf7-sms.php:607
+msgctxt "data-table"
+msgid "First"
+msgstr "ابتدا"
+
+#: pepro-cf7-sms.php:608
+msgctxt "data-table"
+msgid "Last"
+msgstr "انتها"
+
+#: pepro-cf7-sms.php:609
+msgctxt "data-table"
+msgid "Next"
+msgstr "بعدی"
+
+#: pepro-cf7-sms.php:610
+msgctxt "data-table"
+msgid "Previous"
+msgstr "قبلی"
+
+#: pepro-cf7-sms.php:611
+msgctxt "data-table"
+msgid ": activate to sort column ascending"
+msgstr ": فعال سازی نمایش به صورت صعودی"
+
+#: pepro-cf7-sms.php:612
+msgctxt "data-table"
+msgid ": activate to sort column descending"
+msgstr ": فعال سازی نمایش به صورت نزولی"
+
+#: pepro-cf7-sms.php:613
+msgctxt "data-table"
+msgid "Copy to clipboard"
+msgstr "کپی به کلیپ‌بورد"
+
+#: pepro-cf7-sms.php:614
+msgctxt "data-table"
+msgid "Print"
+msgstr "پرینت"
+
+#: pepro-cf7-sms.php:615
+msgctxt "data-table"
+msgid "Export CSV"
+msgstr "استخراج CSV"
+
+#: pepro-cf7-sms.php:616
+msgctxt "data-table"
+msgid "Export Excel"
+msgstr "استخراج اکسل"
+
+#: pepro-cf7-sms.php:617
+msgctxt "data-table"
+msgid "Export PDF"
+msgstr "استخراج PDF"
+
+#: pepro-cf7-sms.php:683
+msgid "Items per page"
+msgstr "تعداد در صفحه"
+
+#: pepro-cf7-sms.php:684 pepro-cf7-sms.php:685 pepro-cf7-sms.php:686
+#: pepro-cf7-sms.php:687 pepro-cf7-sms.php:688 pepro-cf7-sms.php:689
+#: pepro-cf7-sms.php:690 pepro-cf7-sms.php:691 pepro-cf7-sms.php:692
+#: pepro-cf7-sms.php:693 pepro-cf7-sms.php:694
+#, php-format
+msgctxt "items_per_page"
+msgid "Show %s items per page"
+msgstr "نمایش %s مورد در صفحه"
+
+#: pepro-cf7-sms.php:696
+#, php-format
+msgid "Show your only saved submition"
+msgid_plural "Show all %s items at once"
+msgstr[0] "نمایش تمامی %s مورد در یک صفحه"
+msgstr[1] "نمایش تنها مورد قابل نمایش"
+
+#: pepro-cf7-sms.php:714
+msgid "ID"
+msgstr "آی دی"
+
+#: pepro-cf7-sms.php:715
+msgid "Date Created"
+msgstr "تاریخ ایجاد"
+
+#: pepro-cf7-sms.php:716
+msgid "Contact Form"
+msgstr "فرم تماس"
+
+#: pepro-cf7-sms.php:717
+msgid "Subject"
+msgstr "موضوع"
+
+#: pepro-cf7-sms.php:718
+msgid "From"
+msgstr "کاربر"
+
+#: pepro-cf7-sms.php:719
+msgid "Reciever"
+msgstr "گیرنده"
+
+#: pepro-cf7-sms.php:720
+msgid "Status"
+msgstr "وضعیت"
+
+#: pepro-cf7-sms.php:721
+msgid "Message Body"
+msgstr "متن پیام"
+
+#: pepro-cf7-sms.php:722
+msgid "Ultra-fast Send"
+msgstr "ارسال فوق العاده سریع"
+
+#: pepro-cf7-sms.php:723
+msgid "Sent to Admin/Submitter"
+msgstr "ارسال به کاربر/مدیر"
+
+#: pepro-cf7-sms.php:734
+msgid "Action"
+msgstr "عملیات"
+
+#: pepro-cf7-sms.php:737
+#, php-format
+msgid "Your very first saved submition is showing below"
+msgid_plural "%s Saved Submitions found"
+msgstr[0] "تعداد %s مورد ثبت شده در دیتابیس یافت شد"
+msgstr[1] "شما در حال مشاهده تنها مورد ثبتی هستید"
+
+#: pepro-cf7-sms.php:767
+msgid "Administrators"
+msgstr "به مدیران ارسال شد"
+
+#: pepro-cf7-sms.php:767
+msgid "Submitter"
+msgstr "به کاربر ارسال شد"
+
+#: pepro-cf7-sms.php:773
+msgid "YES"
+msgstr "بله"
+
+#: pepro-cf7-sms.php:773
+msgid "NO"
+msgstr "خیر"
+
+#: pepro-cf7-sms.php:776
+#, php-format
+msgctxt "cf7-name-suffix"
+msgid "(ID #%s)"
+msgstr "( شناسه #%s )"
+
+#: pepro-cf7-sms.php:787
+msgid "Delete this specific submition"
+msgstr "حذف این مورد برای همیشه"
+
+#: pepro-cf7-sms.php:809
+msgid "< Previous"
+msgstr "< قبلی"
+
+#: pepro-cf7-sms.php:810
+msgid "Next >"
+msgstr "بعدی >"
+
+#: pepro-cf7-sms.php:821
+msgid "Error Reading Database!"
+msgstr "خطایی در خواندن دیتابیس رخ داد!"
+
+#: pepro-cf7-sms.php:822
+msgid "It seems there's nothing to show."
+msgstr "به نظر میرسد اینجا چیزی برای نمایش وجود ندارد."
+
+#: pepro-cf7-sms.php:981
+#, php-format
+msgctxt "setting-page"
+msgid "Enter %s"
+msgstr "%s را وارد کنید"
+
+#: pepro-cf7-sms.php:990
+#, php-format
+msgctxt "setting-page"
+msgid "Choose %s"
+msgstr "%s را انتخاب کنید"
+
+#: pepro-cf7-sms.php:1154
+msgid "SMS Submission completed successfully"
+msgstr "ارسال با موفقیت انجام گردید"
+
+#: pepro-cf7-sms.php:1158
+msgid "SMS Submission Failed"
+msgstr "ارسال پیامک ناموفق بود"
+
+#. Plugin URI of the plugin/theme
+msgid "https://pepro.dev/cf7-database/"
+msgstr "https://pepro.dev/ultimate-invoice/"
+
+#. Description of the plugin/theme
+msgid ""
+"Send notifications to user and administrators upon Contact Form 7 form "
+"submitting"
+msgstr ""
+"ارسال اعلانات پیامکی برای مدیران و کاربران هنگام ثبت فرم تماس 7 با قابلیت "
+"ذخیره تاریخچه پیامک های ارسالی"
+
+#. Author of the plugin/theme
+msgid "Pepro Dev. Group"
+msgstr "تیم برنامه ‏نویسی پپرو"
+
+#. Author URI of the plugin/theme
+msgid "https://pepro.dev/"
+msgstr "https://pepro.dev/"
