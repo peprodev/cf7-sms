@@ -46,6 +46,12 @@ if (!class_exists("cf7Notifier")) {
         private $db_table = null;
         private $manage_links = array();
         private $meta_links = array();
+        /**
+         * @method __construct
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function __construct()
         {
             global $wpdb;
@@ -82,6 +88,14 @@ if (!class_exists("cf7Notifier")) {
             add_action( "wpcf7_after_save",         array($this,  "cf7sms_save_formdata") );
 
         }
+        /**
+         * Init Plugin
+         *
+         * @method init_plugin
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function init_plugin()
         {
             add_filter("plugin_action_links_{$this->plugin_basename}", array($this, 'plugins_row_links'));
@@ -93,6 +107,16 @@ if (!class_exists("cf7Notifier")) {
             add_action("wp_ajax_cf7sms_{$this->td}", array($this, 'handel_ajax_req'));
             $this->CreateDatabase(); // always check if table exist or not
         }
+        /**
+         * contact form 7 edit cf7 setting tabs hook
+         *
+         * @method cf7sms_editor_panel
+         * @param array $panels
+         * @return array $panels with added data
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function cf7sms_editor_panel($panels)
         {
           $panels['pepro_cf7sms'] = array(
@@ -101,6 +125,16 @@ if (!class_exists("cf7Notifier")) {
           );
           return $panels;
         }
+        /**
+         * contact form 7 setting tab, callback html handler
+         *
+         * @method cf7sms_editor_panel_html
+         * @param array $args
+         * @return string html data of setting page
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function cf7sms_editor_panel_html($args)
         {
           $this->update_footer_info();
@@ -183,12 +217,30 @@ if (!class_exists("cf7Notifier")) {
           </div>
           <?php
         }
+        /**
+         * contact form 7 save custom setting tab's data
+         *
+         * @method cf7sms_save_formdata
+         * @param array $args
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function cf7sms_save_formdata($args)
         {
           if (!empty($_POST)){
             update_option( "pepro_cf7sms_{$args->id}", $_POST['pepro_cf7sms'] );
           }
         }
+        /**
+         * hook to cf7 send sms
+         *
+         * @method cf7sms_before_send_mail_hook
+         * @param array $form_to_DBs
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function cf7sms_before_send_mail_hook( $form_to_DBs )
         {
           $form_to_DB = WPCF7_Submission::get_instance();
@@ -326,6 +378,15 @@ if (!class_exists("cf7Notifier")) {
 
           return $form_to_DBs;
         }
+        /**
+         * Get Plugin Setting Options
+         *
+         * @method get_setting_options
+         * @return array plugin settings
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function get_setting_options()
         {
           return array(
@@ -341,6 +402,15 @@ if (!class_exists("cf7Notifier")) {
             ),
           );
         }
+        /**
+         * wp get_meta_link hool
+         *
+         * @method get_meta_links
+         * @return array meta_link
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function get_meta_links()
         {
             if (!empty($this->meta_links)) {return $this->meta_links;
@@ -356,6 +426,15 @@ if (!class_exists("cf7Notifier")) {
               );
             return $this->meta_links;
         }
+        /**
+         * wp get_manage_links hool
+         *
+         * @method get_manage_links
+         * @return array get_manage_links
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function get_manage_links()
         {
             if (!empty($this->manage_links)) {return $this->manage_links;
@@ -366,13 +445,37 @@ if (!class_exists("cf7Notifier")) {
             );
             return $this->manage_links;
         }
+        /**
+         * Activation Hook
+         *
+         * @method activation_hook
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public static function activation_hook()
         {
             (new cf7Notifier)->CreateDatabase();
         }
+        /**
+         * Deactivation Hook
+         *
+         * @method deactivation_hook
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public static function deactivation_hook()
         {
         }
+        /**
+         * Uninstall Hook
+         *
+         * @method uninstall_hook
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public static function uninstall_hook()
         {
             $ppa = new cf7Notifier;
@@ -388,6 +491,14 @@ if (!class_exists("cf7Notifier")) {
                 }
             }
         }
+        /**
+         * Create Database Scheme
+         *
+         * @method CreateDatabase
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function CreateDatabase()
         {
             global $wpdb;
@@ -412,11 +523,27 @@ if (!class_exists("cf7Notifier")) {
                 // error_log("$tbl Already Exist");
             }
         }
+        /**
+         * Clear Database
+         *
+         * @method DropDatabase
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function DropDatabase()
         {
             global $wpdb;
             $wpdb->query("DROP TABLE IF EXISTS {$this->db_table}");
         }
+        /**
+         * Update Footer Info to Developer info
+         *
+         * @method update_footer_info
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         private function update_footer_info()
         {
             add_filter(
@@ -454,6 +581,15 @@ if (!class_exists("cf7Notifier")) {
             }
             </style>";
         }
+        /**
+         * callback for ajax requesets
+         *
+         * @method handel_ajax_req
+         * @return json ajax response
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function handel_ajax_req()
         {
             if (wp_doing_ajax() && $_POST['action'] == "cf7sms_{$this->td}") {
@@ -505,6 +641,14 @@ if (!class_exists("cf7Notifier")) {
                 die();
             }
         }
+        /**
+         * Add Admin Menu
+         *
+         * @method admin_menu
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function admin_menu()
         {
             add_menu_page(
@@ -521,6 +665,16 @@ if (!class_exists("cf7Notifier")) {
             add_submenu_page($this->db_slug, $page_title, $menu_title, "manage_options", "{$this->db_slug}-setting", array($this,'help_container'));
 
         }
+        /**
+         * setting page html callback data
+         *
+         * @method help_container
+         * @param string $hook
+         * @return string callback html
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function help_container($hook)
         {
             ob_start();
@@ -558,6 +712,15 @@ if (!class_exists("cf7Notifier")) {
             ob_end_clean();
             print $tcona;
         }
+        /**
+         * localize js script
+         *
+         * @method localize_script
+         * @return array i18n array
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function localize_script()
         {
           return array(
@@ -619,6 +782,15 @@ if (!class_exists("cf7Notifier")) {
 
           );
         }
+        /**
+         * callback html for list of data saved in database
+         *
+         * @method db_container
+         * @return string html data
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function db_container()
         {
             ob_start();
@@ -830,6 +1002,15 @@ if (!class_exists("cf7Notifier")) {
             ob_end_clean();
             print $tcona;
         }
+        /**
+         * wp admin init hook
+         *
+         * @method admin_init
+         * @param string $hook
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function admin_init($hook)
         {
             $cf7Notifier_class_options = $this->get_setting_options();
@@ -840,6 +1021,15 @@ if (!class_exists("cf7Notifier")) {
                 }
             }
         }
+        /**
+         * wp admin enqueue scripts hook
+         *
+         * @method admin_enqueue_scripts
+         * @param string $hook
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function admin_enqueue_scripts($hook)
         {
 
@@ -859,6 +1049,20 @@ if (!class_exists("cf7Notifier")) {
             wp_register_script("highlight.js", "{$this->assets_url}js/highlight.js", array( "jquery" ), "3.0.0", true);
 
         }
+        /**
+         * save/insert/record data into database
+         *
+         * @method save_submition
+         * @param int $form_id
+         * @param string $reciever
+         * @param string $status
+         * @param string $msgbody
+         * @param string $extra_info
+         * @return boolean success of failed
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function save_submition($form_id, $reciever, $status, $msgbody, $extra_info)
         {
             global $wpdb;
@@ -881,102 +1085,20 @@ if (!class_exists("cf7Notifier")) {
             );
             return $wpdbinsert;
         }
-        /* common functions */
-        public function _wc_activated()
-        {
-            if (!is_plugin_active('woocommerce/woocommerce.php')
-                || !function_exists('is_woocommerce')
-                || !class_exists('woocommerce')
-            ) {
-                return false;
-            }else{
-                return true;
-            }
-        }
-        public function _vc_activated()
-        {
-            if (!is_plugin_active('js_composer/js_composer.php') || !defined('WPB_VC_VERSION')) {
-                return false;
-            }else{
-                return true;
-            }
-        }
-        public function read_opt($mc, $def="")
-        {
-            return get_option($mc) <> "" ? get_option($mc) : $def;
-        }
-        public function plugins_row_links($links)
-        {
-            foreach ($this->get_manage_links() as $title => $href) {
-                array_unshift($links, "<a href='$href' target='_self'>$title</a>");
-            }
-            $a = new SimpleXMLElement($links["deactivate"]);
-            $this->deactivateURI = "<a href='".$a['href']."'>".$this->deactivateICON.$a[0]."</a>";
-            unset($links["deactivate"]);
-            return $links;
-        }
-        public function plugin_row_meta($links, $file)
-        {
-            if ($this->plugin_basename === $file) {
-                // unset($links[1]);
-                unset($links[2]);
-                $icon_attr = array(
-                  'style' => array(
-                  'font-size: larger;',
-                  'line-height: 1rem;',
-                  'display: inline;',
-                  'vertical-align: text-top;',
-                  ),
-                );
-                foreach ($this->get_meta_links() as $id => $link) {
-                    $title = (!empty($link['icon'])) ? self::do_icon($link['icon'], $icon_attr) . ' ' . esc_html($link['title']) : esc_html($link['title']);
-                    $links[ $id ] = '<a href="' . esc_url($link['url']) . '" title="'.esc_attr($link['description']).'" target="'.(empty($link['target'])?"_blank":$link['target']).'">' . $title . '</a>';
-                }
-                $links[0] = $this->versionICON . $links[0];
-                $links[1] = $this->authorICON . $links[1];
-                $links["deactivate"] = $this->deactivateURI;
-            }
-            return $links;
-        }
-        public static function do_icon($icon, $attr = array(), $content = '')
-        {
-            $class = '';
-            if (false === strpos($icon, '/') && 0 !== strpos($icon, 'data:') && 0 !== strpos($icon, 'http')) {
-                // It's an icon class.
-                $class .= ' dashicons ' . $icon;
-            } else {
-                // It's a Base64 encoded string or file URL.
-                $class .= ' vaa-icon-image';
-                $attr   = self::merge_attr(
-                    $attr, array(
-                    'style' => array( 'background-image: url("' . $icon . '") !important' ),
-                    )
-                );
-            }
-
-            if (! empty($attr['class'])) {
-                $class .= ' ' . (string) $attr['class'];
-            }
-            $attr['class']       = $class;
-            $attr['aria-hidden'] = 'true';
-
-            $attr = self::parse_to_html_attr($attr);
-            return '<span ' . $attr . '>' . $content . '</span>';
-        }
-        public static function parse_to_html_attr($array)
-        {
-            $str = '';
-            if (is_array($array) && ! empty($array)) {
-                foreach ($array as $attr => $value) {
-                    if (is_array($value)) {
-                        $value = implode(' ', $value);
-                    }
-                    $array[ $attr ] = esc_attr($attr) . '="' . esc_attr($value) . '"';
-                }
-                $str = implode(' ', $array);
-            }
-            return $str;
-        }
+        /**
+         * Print Setting Input
+         *
+         * @method print_setting_input
+         * @param string $SLUG
+         * @param string $CAPTION
+         * @param string $extraHtml
+         * @param string $type
+         * @param string $extraClass
+         * @return string html element
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function print_setting_input($SLUG="", $CAPTION="", $extraHtml="", $type="text",$extraClass="")
         {
             $ON = sprintf(_x("Enter %s", "setting-page", $this->td), $CAPTION);
@@ -986,6 +1108,18 @@ if (!class_exists("cf7Notifier")) {
     			</th>
     			<td><input name='$SLUG' $extraHtml type='$type' id='$SLUG' placeholder='$CAPTION' title='$ON' value='" . $this->read_opt($SLUG) . "' class='regular-text $extraClass' /></td>
     		</tr>";}
+        /**
+         * Print Setting Select
+         *
+         * @method print_setting_select
+         * @param string $SLUG
+         * @param string $CAPTION
+         * @param array $dataArray
+         * @return string html element
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function print_setting_select($SLUG, $CAPTION, $dataArray=array())
         {
             $ON = sprintf(_x("Choose %s", "setting-page", $this->td), $CAPTION);
@@ -1006,6 +1140,18 @@ if (!class_exists("cf7Notifier")) {
             </td>
       		</tr>";
         }
+        /**
+         * Print Setting Editor
+         *
+         * @method print_setting_editor
+         * @param string $SLUG
+         * @param string $CAPTION
+         * @param string $re info tips
+         * @return string html element
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function print_setting_editor($SLUG, $CAPTION, $re="")
         {
             echo "<tr><th><label for='$SLUG'>$CAPTION</label></th><td>";
@@ -1016,38 +1162,27 @@ if (!class_exists("cf7Notifier")) {
             );
             echo "<p class='$SLUG'>$re</p></td></tr>";
         }
+        /**
+         * callback for add option
+         *
+         * @method _callback
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function _callback($a)
         {
             return $a;
         }
-        protected function getIP()
-        {
-            // Get server IP address
-            $server_ip = (isset($_SERVER['SERVER_ADDR'])) ? $_SERVER['SERVER_ADDR'] : '';
-
-            // If website is hosted behind CloudFlare protection.
-            if (isset($_SERVER['HTTP_CF_CONNECTING_IP']) && filter_var($_SERVER['HTTP_CF_CONNECTING_IP'], FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
-                return $_SERVER['HTTP_CF_CONNECTING_IP'];
-            }
-
-            if (isset($_SERVER['X-Real-IP']) && filter_var($_SERVER['X-Real-IP'], FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
-                return $_SERVER['X-Real-IP'];
-            }
-
-            if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-                $ip = trim(current(explode(',', $_SERVER['HTTP_X_FORWARDED_FOR'])));
-
-                if (filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) && $ip != $server_ip) {
-                    return $ip;
-                }
-            }
-
-            if (isset($_SERVER['DEV_MODE'])) {
-                return '175.138.84.5';
-            }
-
-            return $_SERVER['REMOTE_ADDR'];
-        }
+        /**
+         * add css to table
+         *
+         * @method print_table_style
+         * @return string css styles
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         protected function print_table_style()
         {
         	if (is_rtl()) {
@@ -1148,22 +1283,41 @@ if (!class_exists("cf7Notifier")) {
       		}
         		</style>";
         }
-        protected function read_status($st)
+        /**
+         * convert sms send status to human-readable text
+         *
+         * @method read_status
+         * @param string $st status
+         * @return string transalted human-readable status
+         * @version 1.0.0
+         * @since 1.0.0
+         * @license https://pepro.dev/license Pepro.dev License
+         */
+        protected function read_status($status)
         {
-          switch ($st) {
+          switch ($status) {
             case '100':
               return __("SMS Submission completed successfully",$this->td);
               break;
-
             case '400':
               return __("SMS Submission Failed",$this->td);
               break;
-
             default:
               return $st;
               break;
           }
         }
+        /**
+         * Send Normal SMS
+         *
+         * @method send_normal_sms
+         * @param int $MobileNumbers
+         * @param string $Messages
+         * @version 1.0.0
+         * @since 1.0.0
+         * @return boolean status
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function send_normal_sms($MobileNumbers,$Messages)
         {
           try {
@@ -1176,6 +1330,16 @@ if (!class_exists("cf7Notifier")) {
           }
           return false;
         }
+        /**
+         * Send Ultrafast SMS
+         *
+         * @method send_ultrafast_sms
+         * @param array $data
+         * @version 1.0.0
+         * @since 1.0.0
+         * @return boolean status
+         * @license https://pepro.dev/license Pepro.dev License
+         */
         public function send_ultrafast_sms($data)
         {
           try {
@@ -1366,6 +1530,83 @@ if (!class_exists("cf7Notifier")) {
                 $result = false;
             }
             return $result;
+        }
+        /* common functions */
+        public function read_opt($mc, $def="")
+        {
+            return get_option($mc) <> "" ? get_option($mc) : $def;
+        }
+        public function plugins_row_links($links)
+        {
+            foreach ($this->get_manage_links() as $title => $href) {
+                array_unshift($links, "<a href='$href' target='_self'>$title</a>");
+            }
+            $a = new SimpleXMLElement($links["deactivate"]);
+            $this->deactivateURI = "<a href='".$a['href']."'>".$this->deactivateICON.$a[0]."</a>";
+            unset($links["deactivate"]);
+            return $links;
+        }
+        public function plugin_row_meta($links, $file)
+        {
+            if ($this->plugin_basename === $file) {
+                // unset($links[1]);
+                unset($links[2]);
+                $icon_attr = array(
+                  'style' => array(
+                  'font-size: larger;',
+                  'line-height: 1rem;',
+                  'display: inline;',
+                  'vertical-align: text-top;',
+                  ),
+                );
+                foreach ($this->get_meta_links() as $id => $link) {
+                    $title = (!empty($link['icon'])) ? self::do_icon($link['icon'], $icon_attr) . ' ' . esc_html($link['title']) : esc_html($link['title']);
+                    $links[ $id ] = '<a href="' . esc_url($link['url']) . '" title="'.esc_attr($link['description']).'" target="'.(empty($link['target'])?"_blank":$link['target']).'">' . $title . '</a>';
+                }
+                $links[0] = $this->versionICON . $links[0];
+                $links[1] = $this->authorICON . $links[1];
+                $links["deactivate"] = $this->deactivateURI;
+            }
+            return $links;
+        }
+        public static function do_icon($icon, $attr = array(), $content = '')
+        {
+            $class = '';
+            if (false === strpos($icon, '/') && 0 !== strpos($icon, 'data:') && 0 !== strpos($icon, 'http')) {
+                // It's an icon class.
+                $class .= ' dashicons ' . $icon;
+            } else {
+                // It's a Base64 encoded string or file URL.
+                $class .= ' vaa-icon-image';
+                $attr   = self::merge_attr(
+                    $attr, array(
+                    'style' => array( 'background-image: url("' . $icon . '") !important' ),
+                    )
+                );
+            }
+
+            if (! empty($attr['class'])) {
+                $class .= ' ' . (string) $attr['class'];
+            }
+            $attr['class']       = $class;
+            $attr['aria-hidden'] = 'true';
+
+            $attr = self::parse_to_html_attr($attr);
+            return '<span ' . $attr . '>' . $content . '</span>';
+        }
+        public static function parse_to_html_attr($array)
+        {
+            $str = '';
+            if (is_array($array) && ! empty($array)) {
+                foreach ($array as $attr => $value) {
+                    if (is_array($value)) {
+                        $value = implode(' ', $value);
+                    }
+                    $array[ $attr ] = esc_attr($attr) . '="' . esc_attr($value) . '"';
+                }
+                $str = implode(' ', $array);
+            }
+            return $str;
         }
     }
     /**
