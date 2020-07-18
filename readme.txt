@@ -53,8 +53,8 @@ You can help us improve our works by committing your changes to Pepro Dev's GitH
 
 == Screenshots ==
 
-1. CF7Db Submissions sent SMS log
-2. CF7Db Setting
+1. CF7 Sent SMS log
+2. CF7 SMS Setting
 
 == Changelog ==
 
