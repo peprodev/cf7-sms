@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Pepro CF7 SMS Notifier
-Description: Send notifications to User and Admins upon Contact Form 7 Submission
+Description: Send SMS notifications to Users and Admins upon Contact Form 7 Submission
 Contributors: amirhosseinhpv, peprodev
 Tags: wordpress contact form, cf7 database, contact form 7, contact form 7 notifier, cf7 sms, contact form 7 sms
 Author: Pepro Dev. Group
@@ -441,7 +441,7 @@ if (!class_exists("cf7Notifier")) {
             }
             $this->manage_links = array(
               $this->settingURL . __("Settings", $this->td) => $this->url,
-              $this->submitionURL . __("Submission", $this->td) => $this->url,
+              $this->submitionURL . __("Sent SMS Log", $this->td) => $this->url,
             );
             return $this->manage_links;
         }
@@ -660,9 +660,8 @@ if (!class_exists("cf7Notifier")) {
                 "{$this->assets_url}images/peprodev.svg",
                 81
             );
-            $page_title = __("List of CF7 Submission", $this->td);
             $menu_title = __("Setting", $this->td);
-            add_submenu_page($this->db_slug, $page_title, $menu_title, "manage_options", "{$this->db_slug}-setting", array($this,'help_container'));
+            add_submenu_page($this->db_slug,$this->title_w, $menu_title, "manage_options", "{$this->db_slug}-setting", array($this,'help_container'));
 
         }
         /**
@@ -907,7 +906,7 @@ if (!class_exists("cf7Notifier")) {
                       $header["action"] = __('Action',$this->td);
                       $header = array_unique($header);
                       echo "
-                            <p><b>". sprintf(_n( "Your very first saved submition is showing below", "%s Saved Submission found", $total, $this->td ), $total) . "</b>   {$items_per_page_selceter}</p>
+                            <p><b>". sprintf(_n( "Your very first saved submition is showing below", "%s Saved SMS Log found", $total, $this->td ), $total) . "</b>   {$items_per_page_selceter}</p>
                           			<table border=\"1\" id=\"exported_data\" class=\"exported_data\">
                           			   <thead>
                               			     <tr>";
