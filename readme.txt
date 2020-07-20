@@ -58,6 +58,15 @@ You can help us improve our works by committing your changes to Pepro Dev's GitH
 
 == Changelog ==
 
+= 1.0.0.2 =
+
+~ fixed WordPress API issues
+~ fixed Security Bugs
++ added wpcf7_sendnormalsms hook
++ added wpcf7_sendultrafastsms hook
+- removed internal SMS sending functions
+~ Separated classes for SMS sending
+
 = 1.0.0 =
 
 -   initial release 
@@ -70,6 +79,15 @@ Join us at [https://pepro.dev/](https://pepro.dev/) and also don't forget to che
 
 
 == Upgrade Notice ==
+
+= 1.0.0.2 =
+
+~ fixed WordPress API issues
+~ fixed Security Bugs
++ added wpcf7_sendnormalsms hook
++ added wpcf7_sendultrafastsms hook
+- removed internal SMS sending functions
+~ Separated classes for SMS sending
 
 = 1.0.0 =
 
