@@ -23,8 +23,8 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 defined("ABSPATH") or die("CF7 Database :: Unauthorized Access!");
-if (!class_exists("cf7Notifier")) {
-    class cf7Notifier
+if (!class_exists("PeproContactformse7enSMS_Notifier")) {
+    class PeproContactformse7enSMS_Notifier
     {
         private static $_instance = null;
         public $td;
@@ -229,7 +229,7 @@ if (!class_exists("cf7Notifier")) {
         public function cf7sms_save_formdata($args)
         {
           if (!empty($_POST)){
-            update_option( "pepro_cf7sms_{$args->id}", $_POST['pepro_cf7sms'] );
+            update_option( "pepro_cf7sms_{$args->id}", sanitize_text_field( $_POST['pepro_cf7sms'] ));
           }
         }
         /**
@@ -455,7 +455,7 @@ if (!class_exists("cf7Notifier")) {
          */
         public static function activation_hook()
         {
-            (new cf7Notifier)->CreateDatabase();
+            (new PeproContactformse7enSMS_Notifier)->CreateDatabase();
         }
         /**
          * Deactivation Hook
@@ -478,11 +478,11 @@ if (!class_exists("cf7Notifier")) {
          */
         public static function uninstall_hook()
         {
-            $ppa = new cf7Notifier;
+            $ppa = new PeproContactformse7enSMS_Notifier;
             $dbClear = get_option("{$ppa->db_slug}-cleardbunistall", "no") === "yes" ? $ppa->DropDatabase() : null;
             if (get_option("{$ppa->db_slug}-clearunistall", "no") === "yes") {
-                $cf7Notifier_class_options = $ppa->get_setting_options();
-                foreach ($cf7Notifier_class_options as $options) {
+                $PeproContactformse7enSMS_Notifier_class_options = $ppa->get_setting_options();
+                foreach ($PeproContactformse7enSMS_Notifier_class_options as $options) {
                     $opparent = $options["name"];
                     foreach ($options["data"] as $optname => $optvalue) {
                         unregister_setting($opparent, $optname);
@@ -754,7 +754,7 @@ if (!class_exists("cf7Notifier")) {
             "str1"    => sprintf(_x("Contact Form 7 Database Exported via %s", "wc-setting-js", $this->td),"$this->title_w"),
             "str2"    => sprintf(_x("CF7 Database Export", "wc-setting-js", $this->td),$this->title_w),
             "str3"    => sprintf(_x("Exported at %s @ %s", "wc-setting-js", $this->td), date_i18n( get_option('date_format'),current_time( "timestamp")), date_i18n( get_option('time_format'),current_time( "timestamp")),),
-            "str4"    => "Pepro-CF7Notifier-". date_i18n("YmdHis",current_time( "timestamp")),
+            "str4"    => "Pepro-cf7Notifier-". date_i18n("YmdHis",current_time( "timestamp")),
             "str5"    => sprintf(_x("Exported via %s — Export Date: %s @ %s — Developed by Pepro Dev Team ( https://pepro.dev/ )", "wc-setting-js", $this->td),$this->title_w,date_i18n( get_option('date_format'),current_time( "timestamp")), date_i18n( get_option('time_format'),current_time( "timestamp")),),
             "str6"    => "Pepro CF7 Notifier",
 
@@ -1012,8 +1012,8 @@ if (!class_exists("cf7Notifier")) {
          */
         public function admin_init($hook)
         {
-            $cf7Notifier_class_options = $this->get_setting_options();
-            foreach ($cf7Notifier_class_options as $sections) {
+            $PeproContactformse7enSMS_Notifier_class_options = $this->get_setting_options();
+            foreach ($PeproContactformse7enSMS_Notifier_class_options as $sections) {
                 foreach ($sections["data"] as $id=>$def) {
                     add_option($id, $def);
                     register_setting($sections["name"], $id);
@@ -1320,7 +1320,6 @@ if (!class_exists("cf7Notifier")) {
         public function send_normal_sms($MobileNumbers,$Messages)
         {
           try {
-            date_default_timezone_set("Asia/Tehran");
             @$SendDateTime = date("Y-m-d")."T".date("H:i:s");
             $SendMessage = $this->sendMessage($MobileNumbers, $Messages, $SendDateTime);
             return $SendMessage;
@@ -1342,7 +1341,6 @@ if (!class_exists("cf7Notifier")) {
         public function send_ultrafast_sms($data)
         {
           try {
-              date_default_timezone_set("Asia/Tehran");
               $UltraFastSend = $this->ultraFastSend($data);
               return $UltraFastSend;
           } catch (Exeption $e) {
@@ -1412,38 +1410,23 @@ if (!class_exists("cf7Notifier")) {
          */
         private function _getToken()
         {
-            $postData = array(
-            'UserApiKey' => $this->APIKey,
-            'SecretKey' => $this->SecretKey,
-            'System' => 'php_rest_v_2_0'
+            $postData   = array(
+              'UserApiKey' => $this->APIKey,
+              'SecretKey' => $this->SecretKey,
+              'System' => 'php_rest_v_2_0'
             );
             $postString = json_encode($postData);
-
-            $ch = curl_init($this->APIURL.$this->getApiTokenUrl());
-            curl_setopt(
-                $ch, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json'
-                )
-            );
-            curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-
-            $result = curl_exec($ch);
-            curl_close($ch);
-
-            $response = json_decode($result);
-
-            $resp = false;
+            $url        = $this->APIURL.$this->getApiTokenUrl();
+            $args       = array('headers' => array('Content-Type' => 'application/json'));
+            $response   = wp_remote_get($url,$args);
+            $result     = wp_remote_retrieve_body( $response );
+            $response   = json_decode($result);
+            $resp       = false;
             $IsSuccessful = '';
-
-            $TokenKey = '';
-
+            $TokenKey   = '';
             if (is_object($response)) {
                 $IsSuccessful = $response->IsSuccessful;
                 if ($IsSuccessful == true) {
-
                     $TokenKey = $response->TokenKey;
                     $resp = $TokenKey;
                 } else {
@@ -1466,22 +1449,9 @@ if (!class_exists("cf7Notifier")) {
         private function _execute($postData, $url, $token)
         {
             $postString = json_encode($postData);
-
-            $ch = curl_init($url);
-            curl_setopt(
-                $ch, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'x-sms-ir-secure-token: '.$token
-                )
-            );
-            curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-
-            $result = curl_exec($ch);
-            curl_close($ch);
-
+            $args       = array('headers' => array('Content-Type' => 'application/json', 'x-sms-ir-secure-token'=>$token));
+            $response   = wp_remote_get($url,$args);
+            $result     = wp_remote_retrieve_body( $response );
             return $result;
         }
         /**
@@ -1617,12 +1587,12 @@ if (!class_exists("cf7Notifier")) {
      */
     add_action(
         "plugins_loaded", function () {
-            global $cf7Notifier;
+            global $PeproContactformse7enSMS_Notifier;
             load_plugin_textdomain("cf7sms", false, dirname(plugin_basename(__FILE__))."/languages/");
-            $cf7Notifier = new cf7Notifier;
-            register_activation_hook(__FILE__, array("cf7Notifier", "activation_hook"));
-            register_deactivation_hook(__FILE__, array("cf7Notifier", "deactivation_hook"));
-            register_uninstall_hook(__FILE__, array("cf7Notifier", "uninstall_hook"));
+            $PeproContactformse7enSMS_Notifier = new PeproContactformse7enSMS_Notifier;
+            register_activation_hook(__FILE__, array("PeproContactformse7enSMS_Notifier", "activation_hook"));
+            register_deactivation_hook(__FILE__, array("PeproContactformse7enSMS_Notifier", "deactivation_hook"));
+            register_uninstall_hook(__FILE__, array("PeproContactformse7enSMS_Notifier", "uninstall_hook"));
         }
     );
 }
