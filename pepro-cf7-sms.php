@@ -82,9 +82,6 @@ if (!class_exists("PeproContactformse7enSMS_Notifier")) {
 
             add_action( "init", array($this, 'init_plugin'));
 
-            include_once "$this->plugin_dir/classes/smsdotir/SendMessage.php";
-            include_once "$this->plugin_dir/classes/smsdotir/UltraFastSend.php";
-
             add_filter( "wpcf7_sendnormalsms",    array($this, "send_normal_sms"),10, 2 );
             add_filter( "wpcf7_sendultrafastsms", array($this, "send_ultrafast_sms"),10, 1 );
 
@@ -703,7 +700,6 @@ if (!class_exists("PeproContactformse7enSMS_Notifier")) {
             settings_fields("{$this->db_slug}_general");
             if (isset($_REQUEST["settings-updated"]) && $_REQUEST["settings-updated"] == "true") { echo '<div id="message" class="updated notice is-dismissible"><p>' . _x("Settings saved successfully.", "setting-general", $this->td) . "</p></div>"; }
             echo '<br><table class="form-table"><tbody>';
-
 
             $this->print_setting_input("{$this->db_slug}-user_secret_key", _x("User Security Key","setting-general", $this->td), $input_required, "text");
             $this->print_setting_input("{$this->db_slug}-user_api_key", _x("User API Key","setting-general", $this->td), $input_required, "text");
@@ -1360,8 +1356,7 @@ if (!class_exists("PeproContactformse7enSMS_Notifier")) {
           $SendMessage = false;
           try {
             @$SendDateTime = date("Y-m-d")."T".date("H:i:s");
-            $SmsIR_SendMessage = new SmsIR_SendMessage($this->APIKey, $this->SecretKey, $this->LineNumber, $this->APIURL);
-            $SendMessage = $SmsIR_SendMessage->sendMessage($MobileNumbers,$Messages,$SendDateTime);
+            $SendMessage = $this->sendMessage($MobileNumbers,$Messages,$SendDateTime);
             return $SendMessage;
           }catch (Exeption $e) {
             error_log('Error UltraFastSend : '.$e->getMessage());
@@ -1382,8 +1377,7 @@ if (!class_exists("PeproContactformse7enSMS_Notifier")) {
         {
           $UltraFastSend = false;
           try {
-            $SmsIR_UltraFastSend = new SmsIR_UltraFastSend($this->APIKey, $this->SecretKey, $this->APIURL);
-            $UltraFastSend = $SmsIR_UltraFastSend->ultraFastSend($data);
+            $UltraFastSend = $this->ultraFastSend($data);
             return $UltraFastSend;
           }catch (Exeption $e) {
             error_log('Error UltraFastSend : '.$e->getMessage());
@@ -1466,6 +1460,163 @@ if (!class_exists("PeproContactformse7enSMS_Notifier")) {
                 $str = implode(' ', $array);
             }
             return $str;
+        }
+
+
+
+
+
+        /**
+         * Ultra Fast Send Message.
+         *
+         * @param data[] $data array structure of message data
+         *
+         * @return string Indicates the sent sms result
+         */
+        public function ultraFastSend($data)
+        {
+            $token = $this->_getToken($this->APIKey, $this->SecretKey);
+            if ($token != false) {
+                $postData = $data;
+
+                $url = $this->APIURL.$this->getAPIUltraFastSendUrl();
+                $UltraFastSend = $this->_execute($postData, $url, $token);
+
+                $object = json_decode($UltraFastSend);
+
+                $result = false;
+                if (is_object($object)) {
+                    $result = $object->Message;
+                } else {
+                    $result = false;
+                }
+            } else {
+                $result = false;
+            }
+            return $result;
+        }
+        /**
+         * Gets API Ultra Fast Send Url.
+         *
+         * @return string Indicates the Url
+         */
+        protected function getAPIUltraFastSendUrl()
+        {
+            return "api/UltraFastSend";
+        }
+
+
+        /**
+        * Send sms.
+        *
+        * @param MobileNumbers[] $MobileNumbers array structure of mobile numbers
+        * @param Messages[]      $Messages      array structure of messages
+        * @param string          $SendDateTime  Send Date Time
+
+        *
+        * @return string Indicates the sent sms result
+        */
+        public function sendMessage($MobileNumbers, $Messages, $SendDateTime = '')
+        {
+          $token = $this->_getToken($this->APIKey, $this->SecretKey);
+          if ($token != false) {
+            $postData = array(
+              'Messages' => $Messages,
+              'MobileNumbers' => $MobileNumbers,
+              'LineNumber' => $this->LineNumber,
+              'SendDateTime' => $SendDateTime,
+              'CanContinueInCaseOfError' => 'false'
+            );
+            $url = $this->APIURL.$this->getAPIMessageSendUrl();
+            $SendMessage = $this->_execute($postData, $url, $token);
+            $object = json_decode($SendMessage);
+            $result = false;
+            if (is_object($object)) {
+              $result = $object->Message;
+            } else {
+              $result = false;
+            }
+          } else {
+            $result = false;
+          }
+          return $result;
+        }
+        /**
+        * Gets API Message Send Url.
+        *
+        * @return string Indicates the Url
+        */
+        protected function getAPIMessageSendUrl()
+        {
+          return "api/MessageSend";
+        }
+
+
+        /**
+        * Gets Api Token Url.
+        *
+        * @return string Indicates the Url
+        */
+        protected function getApiTokenUrl()
+        {
+          return "api/Token";
+        }
+        /**
+        * Gets token key for all web service requests.
+        *
+        * @return string Indicates the token key
+
+        */
+        private function _getToken()
+        {
+          $args = array(
+            'method'      => 'POST',
+            'body'        => array(
+              'UserApiKey' => $this->APIKey,
+              'SecretKey' => $this->SecretKey,
+              'System' => 'php_rest_v_2_0'
+            ),
+            'httpversion' => '1.0',
+            'headers'     => array(
+              'Content-Type: application/json',
+            ),
+          );
+          $result = wp_remote_retrieve_body(wp_remote_request($this->APIURL.$this->getApiTokenUrl(), $args ));
+          $response = json_decode($result);
+          $resp = false;
+          $IsSuccessful = '';
+          $TokenKey = '';
+          if (is_object($response)) {
+            $IsSuccessful = $response->IsSuccessful;
+            if ($IsSuccessful == true) {
+              $TokenKey = $response->TokenKey;
+              $resp = $TokenKey;
+            } else {
+              $resp = false;
+            }
+          }
+          return $resp;
+        }
+        /**
+        * Executes the main method.
+        *
+        * @param postData[] $postData array of json data
+        * @param string     $url      url
+        * @param string     $token    token string
+        *
+        * @return string Indicates the curl execute result
+        */
+        private function _execute($postData, $url, $token)
+        {
+          $args = array(
+            "method"      => 'POST',
+            "body"        => $postData,
+            "httpversion" => '1.0',
+            "headers"     => array(
+              "x-sms-ir-secure-token" => $token,
+            ),
+          );
+          return wp_remote_retrieve_body(wp_remote_request($url, $args ));
         }
     }
     /**
