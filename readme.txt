@@ -55,17 +55,23 @@ You can help us improve our works by committing your changes to Pepro Dev's GitH
 
 1. CF7 Sent SMS log
 2. CF7 SMS Setting
+3. CF7 Contact Form's Setting
 
 == Changelog ==
 
-= 1.0.0.2 =
+= 1.0.0.b3 =
 
-~ fixed WordPress API issues
-~ fixed Security Bugs
++ dependency-free SMS sending
++ cURL requests replaced with WordPress built-in HTTP API
+
+= 1.0.0.b2 =
+
++ fixed WordPress API issues
++ fixed Security Bugs
 + added wpcf7_sendnormalsms hook
 + added wpcf7_sendultrafastsms hook
-- removed internal SMS sending functions
-~ Separated classes for SMS sending
++ removed internal SMS sending functions
++ separated classes for SMS sending
 
 = 1.0.0 =
 
@@ -80,14 +86,19 @@ Join us at [https://pepro.dev/](https://pepro.dev/) and also don't forget to che
 
 == Upgrade Notice ==
 
-= 1.0.0.2 =
+= 1.0.0.b3 =
 
-~ fixed WordPress API issues
-~ fixed Security Bugs
++ dependency-free SMS sending
++ cURL requests replaced with WordPress built-in HTTP API
+
+= 1.0.0.b2 =
+
++ fixed WordPress API issues
++ fixed Security Bugs
 + added wpcf7_sendnormalsms hook
 + added wpcf7_sendultrafastsms hook
-- removed internal SMS sending functions
-~ Separated classes for SMS sending
++ removed internal SMS sending functions
++ separated classes for SMS sending
 
 = 1.0.0 =
 
