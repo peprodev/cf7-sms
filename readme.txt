@@ -21,7 +21,7 @@ Here are some awesome features of CF7-DB:
 
 
 - Complete integrations with SMS.IR panel including Ultrafast-send
-- Automatically records submissions sent SMS
+- Automatically records submissions sent SMS with statuses 
 - Filter by Contact Forms, Sent to User/Admin, Receiver mobile and ...
 - Export sent SMS log as Excel
 - Export sent SMS log as CSV
