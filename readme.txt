@@ -3,7 +3,7 @@ Contributors: peprodev,amirhosseinhpv
 Donate link: https://pepro.dev/donate
 Tags: wordpress contact form, cf7 database, contact form 7, contact form 7 notifier, cf7 sms, contact form 7 sms
 Requires at least: 5.0
-Tested up to: 5.4
+Tested up to: 5.5
 Stable tag: 1.0.0
 Requires PHP: 5.6
 License: GPLv2 or later
@@ -17,7 +17,7 @@ Send notifications to User and Admins upon Contact Form 7 Submission
 
 
 This plugin lets you send SMS to users and admins upon contact form 7 submissions and also track sent messages with complete report and export features.
-Here are some awesome features of CF7-DB:
+Here are some awesome features of CF7-SMS:
 
 
 - Complete integrations with SMS.IR panel including Ultrafast-send
@@ -48,7 +48,7 @@ Here are some awesome features of CF7-DB:
 
 = How can I contribute to this plugin? =
 
-You can help us improve our works by committing your changes to Pepro Dev's GitHub repository: https://github.com/peprodev/ultimate-invoice
+You can help us improve our works by committing your changes to Pepro Dev's GitHub repository: https://github.com/peprodev/
 
 
 == Screenshots ==
@@ -80,8 +80,7 @@ You can help us improve our works by committing your changes to Pepro Dev's GitH
 
 == About Us ==
 
-PEPRO DEV is a premium supplier of quality WordPress plugins, services and support.
-Join us at [https://pepro.dev/](https://pepro.dev/) and also don't forget to check our [free offerings](http://profiles.wordpress.org/peprodev/), we hope you enjoy them!
+PEPRO DEV is a premium supplier of quality WordPress plugins, services and support. Join us at [https://pepro.dev/](https://pepro.dev/) and also don't forget to check our [free offerings](http://profiles.wordpress.org/peprodev/), we hope you enjoy them!
 
 
 == Upgrade Notice ==

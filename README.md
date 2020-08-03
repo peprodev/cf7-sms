@@ -1,7 +1,6 @@
-**PEPRO Contact Form 7 SMS Notifier**
+**PEPRO CONTACT FORM 7 SMS NOTIFIER**
 =====================================
 
-##### **Developed by** [Perpro Development Team](https://pepro.dev/)
+##### **Developed by** [Perpro Development Group](https://pepro.dev/)
 
-*Currrent Version: 1.0.0* \| *Lead Programmer:*
-[Amirhosseinhpv](https://hpv.im/)
+*Current Version: 1.0.0* \| *Lead Programmer:* [Amirhosseinhpv](https://hpv.im/)
