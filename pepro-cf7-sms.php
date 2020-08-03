@@ -727,6 +727,9 @@ if (!class_exists("PeproContactformse7enSMS_Notifier")) {
          */
         public function localize_script()
         {
+		  $currentTimestamp = current_time( "timestamp");
+          $currentDate = date_i18n( get_option('date_format'),$currentTimestamp);
+          $currentTime = date_i18n( get_option('time_format'),$currentTimestamp);
           return array(
             "td"                  => "cf7sms_{$this->td}",
             "ajax"                => admin_url("admin-ajax.php"),
@@ -755,13 +758,13 @@ if (!class_exists("PeproContactformse7enSMS_Notifier")) {
             "clearDBConfirmation" => _x("Are you sure you want to clear all data from database? This cannot be undone.", "wc-setting-js", $this->td),
             "clearDBConfirmatio2" => _x("Are you sure you want to clear all Current Contact form data from database? This cannot be undone.", "wc-setting-js", $this->td),
             "clearDBConfTitle"    => _x("Clear Database", "wc-setting-js", $this->td),
-
-            "str1"    => sprintf(_x("Contact Form 7 Database Exported via %s", "wc-setting-js", $this->td),"$this->title_w"),
-            "str2"    => sprintf(_x("CF7 Database Export", "wc-setting-js", $this->td),$this->title_w),
-            "str3"    => sprintf(_x("Exported at %s @ %s", "wc-setting-js", $this->td), date_i18n( get_option('date_format'),current_time( "timestamp")), date_i18n( get_option('time_format'),current_time( "timestamp")),),
+	
+			"str1"    => sprintf(_x("Contact Form 7 SMS Log Exported via %s", "wc-setting-js", $this->td),"$this->title_w"),
+            "str2"    => sprintf(_x("CF7 SMS Log Export", "wc-setting-js", $this->td),$this->title_w),
+            "str3"    => sprintf(_x("Exported at %s @ %s", "wc-setting-js", $this->td),$currentDate,$currentTime),
             "str4"    => "Pepro-cf7Notifier-". date_i18n("YmdHis",current_time( "timestamp")),
-            "str5"    => sprintf(_x("Exported via %s — Export Date: %s @ %s — Developed by Pepro Dev Team ( https://pepro.dev/ )", "wc-setting-js", $this->td),$this->title_w,date_i18n( get_option('date_format'),current_time( "timestamp")), date_i18n( get_option('time_format'),current_time( "timestamp")),),
-            "str6"    => "Pepro CF7 Notifier",
+            "str5"    => sprintf(_x("Exported via %s — Export Date: %s @ %s — Developed by Pepro Dev Team ( https://pepro.dev/ )", "wc-setting-js", $this->td),$this->title_w,$currentDate,$currentTime),
+			"str6"    => "Pepro CF7 Notifier",
 
             "tbl1"    => _x("No data available in table", "data-table", $this->td),
             "tbl2"    => _x("Showing _START_ to _END_ of _TOTAL_ entries", "data-table", $this->td),
@@ -1639,4 +1642,5 @@ if (!class_exists("PeproContactformse7enSMS_Notifier")) {
 }
 /*################################################################################
 END OF PLUGIN || Programming is art // Artist : Amirhosseinhpv [https://hpv.im/]
-// */
+################################################################################*/
+
