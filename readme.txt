@@ -4,7 +4,7 @@ Donate link: https://pepro.dev/donate
 Tags: wordpress contact form, cf7 database, contact form 7, contact form 7 notifier, cf7 sms, contact form 7 sms
 Requires at least: 5.0
 Tested up to: 5.5
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -59,6 +59,10 @@ You can help us improve our works by committing your changes to Pepro Dev's GitH
 
 == Changelog ==
 
+= 1.0.1 =
+
+-   Directory Index Blocked for resources
+
 = 1.0.0.b3 =
 
 + dependency-free SMS sending
@@ -84,6 +88,10 @@ PEPRO DEV is a premium supplier of quality WordPress plugins, services and suppo
 
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+
+-   Directory Index Blocked for resources
 
 = 1.0.0.b3 =
 
