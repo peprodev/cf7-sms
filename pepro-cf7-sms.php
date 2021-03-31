@@ -9,10 +9,10 @@ Developer: Amirhosseinhpv
 Author URI: https://pepro.dev/
 Developer URI: https://hpv.im/
 Plugin URI: https://pepro.dev/cf7-database/
-Version: 1.0.1
-Stable tag: 1.0.1
+Version: 1.1.0
+Stable tag: 1.1.0
 Requires at least: 5.0
-Tested up to: 5.4
+Tested up to: 5.7
 Requires PHP: 5.6
 WC requires at least: 4.0
 WC tested up to: 4.2.0
@@ -65,7 +65,7 @@ if (!class_exists("PeproContactformse7enSMS_Notifier")) {
             $this->plugin_basename = plugin_basename(__FILE__);
             $this->url = admin_url("admin.php?page={$this->db_slug}");
             $this->plugin_file = __FILE__;
-            $this->version = "1.0.1";
+            $this->version = "1.1.0";
             $this->deactivateURI = null;
             $this->deactivateICON = '<span style="font-size: larger; line-height: 1rem; display: inline; vertical-align: text-top;" class="dashicons dashicons-dismiss" aria-hidden="true"></span> ';
             $this->versionICON = '<span style="font-size: larger; line-height: 1rem; display: inline; vertical-align: text-top;" class="dashicons dashicons-admin-plugins" aria-hidden="true"></span> ';
@@ -956,7 +956,7 @@ if (!class_exists("PeproContactformse7enSMS_Notifier")) {
                                                   $val = "<a target='_blank' href='".admin_url("admin.php?page=wpcf7&post={$obj->form_id}&action=edit")."'>".get_the_title($obj->form_id)." ".sprintf(_x("(ID #%s)","cf7-name-suffix",$this->td),$obj->form_id)."</a>";
                                                   break;
                                                 case 'date_created':
-                                                  $val = "<p>". date_i18n( get_option('date_format'), $obj->date_created ) . "</p><p>" . date_i18n( get_option('time_format'), $obj->date_created )."</p>";
+                                                  $val = "<p>". date_i18n( get_option('date_format'), strtotime($obj->date_created) ) . "</p><p>" . date_i18n( get_option('time_format'), strtotime($obj->date_created) )."</p>";
                                                   break;
                                                 case 'email':
                                                   $name = (isset($data_array['your-name'])?$data_array['your-name']:"");
