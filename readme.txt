@@ -1,4 +1,4 @@
-=== Pepro CF7 SMS Notifier ===
+=== PeproDev CF7 SMS Notifier ===
 Contributors: peprodev,amirhosseinhpv
 Donate link: https://pepro.dev/donate
 Tags: wordpress contact form, cf7 database, contact form 7, contact form 7 notifier, cf7 sms, contact form 7 sms

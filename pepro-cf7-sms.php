@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Pepro CF7 SMS Notifier
+Plugin Name: PeproDev CF7 SMS Notifier
 Description: Send SMS notifications to Users and Admins upon Contact Form 7 Submission
 Contributors: amirhosseinhpv, peprodev
 Tags: wordpress contact form, cf7 database, contact form 7, contact form 7 notifier, cf7 sms, contact form 7 sms
