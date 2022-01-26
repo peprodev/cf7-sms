@@ -12,7 +12,7 @@ Plugin URI: https://pepro.dev/cf7-database/
 Version: 1.1.0
 Stable tag: 1.1.0
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.9
 Requires PHP: 5.6
 WC requires at least: 4.0
 WC tested up to: 4.2.0

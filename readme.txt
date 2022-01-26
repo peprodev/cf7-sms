@@ -3,7 +3,7 @@ Contributors: peprodev,amirhosseinhpv
 Donate link: https://pepro.dev/donate
 Tags: wordpress contact form, cf7 database, contact form 7, contact form 7 notifier, cf7 sms, contact form 7 sms
 Requires at least: 5.0
-Tested up to: 5.7
+Tested up to: 5.9
 Stable tag: 1.0.1
 Requires PHP: 5.6
 License: GPLv2 or later
